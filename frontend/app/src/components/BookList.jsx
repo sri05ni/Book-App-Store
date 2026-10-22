@@ -6,11 +6,14 @@ import { Link } from 'react-router-dom'
 function BookList() {
     const [books,setbooks]=useState([])
     useEffect(()=>{
-        axios.get('http://localhost:5000/books').then(response=>setbooks(response.data)).catch((error)=>console.log(error))
+        // axios.get('http://localhost:5000/books')
+        axios.get('https://book-app-store.onrender.com/books')
+        .then(response=>setbooks(response.data)).catch((error)=>console.log(error))
     },[])
 
     const handleDelete=(id)=>{
-        axios.delete(`http://localhost:5000/books/${id}`)
+        // axios.delete(`http://localhost:5000/books/${id}`)
+        axios.delete(`https://book-app-store.onrender.com/books/${id}`)
         .then(()=>setbooks(books.filter(book=>book._id!==id)))
         .catch((error)=>console.log(error))
     }
